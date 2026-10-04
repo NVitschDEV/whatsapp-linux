@@ -1,0 +1,45 @@
+{
+  "name": "whatsapp-linux-chromium",
+  "productName": "WhatsApp",
+  "desktopName": "whatsapp-linux",
+  "version": "2.1.0",
+  "description": "Standalone WhatsApp Web app for Linux with embedded Chromium",
+  "author": "OpenAI",
+  "license": "MIT",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "smoke-test": "electron . --smoke-test",
+    "build": "electron-builder --linux AppImage"
+  },
+  "devDependencies": {
+    "electron": "44.5.1",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "publish": null,
+    "appId": "com.whatsapp.linux.chromium",
+    "productName": "WhatsApp",
+    "asar": true,
+    "files": [
+      "main.cjs",
+      "package.json",
+      "assets/icon.png"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Network",
+      "icon": "assets/icon.png",
+      "executableName": "whatsapp-linux",
+      "syncDesktopName": true,
+      "artifactName": "WhatsApp-${version}-${arch}.AppImage"
+    },
+    "appImage": {
+      "artifactName": "WhatsApp-${version}-${arch}.AppImage"
+    }
+  }
+}
